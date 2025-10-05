@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air & Weather Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+        }
+        #map {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #1e3c72;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 70px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(30,60,114,0.08);
+        }
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 32px;
+        }
+        .navbar nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .navbar nav a:hover {
+            color: #ffe600;
+        }
+        .navbar .cta {
+            background: #ffe600;
+            color: #1e3c72;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 24px;
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0 16px;
+                height: auto;
+            }
+            .navbar nav {
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                padding: 16px 0;
+            }
+            .navbar .cta {
+                width: 100%;
+                padding: 12px 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="navbar">
+        <div class="logo">SPACE APPS</div>
+        <nav>
+            <a href="About Us.html">About Us</a>
+            <a href="#">Resources</a>
+            <a href="#">Awards</a>
+            <a href="#">News</a>
+            <a href="#">ChatBot</a>
+            <a href="#">Healty</a>
+            <a href="#">Air Quality</a>
+        </nav>
+        <button class="cta">Explore the Hackathon</button>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize Leaflet map
+        var map = L.map('map', {
+            center: [0, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 10,
+            worldCopyJump: true
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+        // Demo air quality markers
+        var airQualityData = [
+            { city: 'Jakarta', coords: [-6.2, 106.8], aqi: 152, status: 'Unhealthy' },
+            { city: 'Beijing', coords: [39.9, 116.4], aqi: 98, status: 'Moderate' },
+            { city: 'New York', coords: [40.7, -74.0], aqi: 42, status: 'Good' },
+            { city: 'Delhi', coords: [28.6, 77.2], aqi: 210, status: 'Very Unhealthy' },
+            { city: 'London', coords: [51.5, -0.1], aqi: 55, status: 'Moderate' },
+            { city: 'Sydney', coords: [-33.9, 151.2], aqi: 33, status: 'Good' },
+            { city: 'Moscow', coords: [55.8, 37.6], aqi: 77, status: 'Moderate' },
+            { city: 'Rio de Janeiro', coords: [-22.9, -43.2], aqi: 61, status: 'Moderate' }
+        ];
+        airQualityData.forEach(function(data) {
+            var color = data.aqi > 200 ? 'red' : data.aqi > 150 ? 'orange' : data.aqi > 100 ? 'yellow' : 'green';
+            var marker = L.circleMarker(data.coords, {
+                radius: 12,
+                color: color,
+                fillColor: color,
+                fillOpacity: 0.7
+            }).addTo(map);
+            marker.bindPopup('<b>' + data.city + '</b><br>AQI: ' + data.aqi + '<br>Status: ' + data.status);
+        });
+    </script>
+</body>
+</html>

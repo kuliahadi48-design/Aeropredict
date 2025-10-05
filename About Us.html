@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 16px 32px 16px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #ffe600;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .profiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            justify-items: center;
+        }
+        .profile-card {
+            background: #fff;
+            color: #1e3c72;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(30,60,114,0.12);
+            padding: 32px 24px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .profile-card:hover {
+            box-shadow: 0 8px 32px rgba(30,60,114,0.18);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(120deg,#ffe600 0%,#2a5298 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 12px rgba(30,60,114,0.10);
+        }
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2a5298;
+        }
+        .profile-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        .profile-desc {
+            font-size: 1rem;
+            color: #444;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="subtitle">Meet the creators of this website</div>
+        <div class="profiles">
+            <div class="profile-card">
+                <div class="profile-img">A</div>
+                <div class="profile-name">Adi</div>
+                <div class="profile-role">Frontend Developer</div>
+                <div class="profile-desc">Adi specializes in building beautiful and responsive user interfaces. He loves working with modern web technologies and bringing ideas to life.</div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img">AB</div>
+                <div class="profile-name">Absyah</div>
+                <div class="profile-role">Backend Developer</div>
+                <div class="profile-desc">Absyah is passionate about server-side logic, APIs, and databases. He ensures the website runs smoothly and securely behind the scenes.</div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img">H</div>
+                <div class="profile-name">Hafidz</div>
+                <div class="profile-role">UI/UX Designer</div>
+                <div class="profile-desc">Hafidz designs intuitive and engaging user experiences. He focuses on usability and visual appeal to make the site enjoyable for everyone.</div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img">F</div>
+                <div class="profile-name">Fathur</div>
+                <div class="profile-role">Fullstack Developer</div>
+                <div class="profile-desc">Fathur bridges the gap between frontend and backend, ensuring seamless integration and performance across the platform.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
